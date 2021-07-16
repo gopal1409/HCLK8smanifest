@@ -1,21 +1,22 @@
-apiVersion: apps/v1
-kind: Deployment
+#kubectl apply -f deploy.yaml
+apiVersion: apps/v1 #becuase all the communication happen through api
+kind: Deployment #invoke the deployment api
 metadata:
-  name: nginx-deployment
-  labels:
-    app: nginx 
-spec:
-  replicas: 3
-  selector:
+  name: nginx-deployment #in k8s it will create a deployment with this name
+  labels: #this is the lable format 
+    app: nginx  #the label format will be in key:value
+spec: #this is the specification for deployment
+  replicas: 3 #inside your deployment it will create three pod
+  selector: #mathkeyexpress
     matchLabels:
       app: nginx 
-  template:
-    metadata:
+  template: #to define the container defination we use tempate
+    metadata: #same label i have provider inside template using metadata. 
       labels:
         app: nginx 
-    spec:
+    spec: #specification of container
       containers:
       - name: nginx 
-        image: nginx:1.14.2
+        image: nginx:1.14.2 #download the container image
         ports:
-        - containerPort: 80
+        - containerPort: 80 #goign to expose the same internally in port 80
