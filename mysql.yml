@@ -1,0 +1,34 @@
+#kubectl apply -f deploy.yaml
+apiVersion: apps/v1 #becuase all the communication happen through api
+kind: Deployment #invoke the deployment api
+metadata:
+  name: mysql #in k8s it will create a deployment with this name
+  labels: #this is the lable format 
+    app: mysql  #the label format will be in key:value
+spec: #this is the specification for deployment
+  replicas: 1 #inside your deployment it will create three pod
+  selector: #mathkeyexpress
+    matchLabels:
+      app: mysql 
+  template: #to define the container defination we use tempate
+    metadata: #same label i have provider inside template using metadata. 
+      labels:
+        app: mysql 
+    spec: #specification of container
+      containers:
+      - name: mysql
+        image: mysql:5.6 #download the container image
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: dbpassword11
+        ports:
+          - containerPort: 3306 #goign to expose the same internally in port 80
+        volumeMounts: #this is inside your container or pod
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/mysql #this is the path inside your container
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claim-name: task-pv-volume
+
+          
