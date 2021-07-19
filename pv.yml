@@ -7,8 +7,8 @@ metadata:
     type: local #this will be the label,
 spec:
   storageClassName: manual
-    capacity: 10G #capacity
+    capacity: 10G 
   accessModes:
-    - ReadWriteOnce #Read #ReadWriteMany
+    - ReadWriteOnce 
   hostPath:
     path: "/mnt/data"
