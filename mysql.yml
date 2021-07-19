@@ -29,6 +29,6 @@ spec: #this is the specification for deployment
       volumes:
         - name: mysql-persistent-storage
           persistentVolumeClaim:
-            claimName: task-pv-volume
+            claimName: task-pv-claim
 
           
