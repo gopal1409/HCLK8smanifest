@@ -1,0 +1,14 @@
+#kubectl apply -f pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: task-pv-volume #it will create a volume with this name
+  labels:
+    type: local #this will be the label,
+spec:
+  storageClassName: hclstorage #this is the name
+    capacity: 10G #capacity
+  accessModes:
+    - ReadWriteOnce #Read #ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
