@@ -6,7 +6,7 @@ metadata:
   labels:
     type: local #this will be the label,
 spec:
-  storageClassName: hclstorage #this is the name
+  storageClassName: manual
     capacity: 10G #capacity
   accessModes:
     - ReadWriteOnce #Read #ReadWriteMany
