@@ -10,6 +10,6 @@ spec:
   capacity:
       storage: 10Gi #thin provisioing from 10Gb i am using 2Gb k8s will use only 2GB
   accessModes:
-    - ReadWriteOnce 
+    - ReadWriteOnce //readwrietmany //read 
   hostPath:
     path: "/mnt/data"
