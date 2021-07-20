@@ -20,7 +20,7 @@ spec: #this is the specification for deployment
         image: mysql:5.6 #download the container image
         env:
           - name: MYSQL_ROOT_PASSWORD
-            valuefrom: 
+            valueFrom: 
               name:  mysql-db-password
               key: db-password
         ports:
