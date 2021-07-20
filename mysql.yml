@@ -26,9 +26,14 @@ spec: #this is the specification for deployment
         volumeMounts: #this is inside your container or pod
           - name: mysql-persistent-storage
             mountPath: /var/lib/mysql #this is the path inside your container
-      volumes:
+          - name: usermgmt-db-creation #this is inside your container
+            mountPath: /docker-entrypoint-initdb.d #this is the init db which will help you to run some mysql script inside your container while launching
+      volumes: #configmap always stored as volume. 
         - name: mysql-persistent-storage
           persistentVolumeClaim:
             claimName: task-pv-claim
+        - name: usermgmt-db-creation
+          configMap:
+            name: usermanagement-db-creation-script #the config map name. 
 
           
