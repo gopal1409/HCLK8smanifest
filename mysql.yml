@@ -21,8 +21,9 @@ spec: #this is the specification for deployment
         env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom: 
-              name:  mysql-db-password
-              key: db-password
+              secretKeyRef:
+                name:  mysql-db-password
+                key: db-password
         ports:
           - containerPort: 3306 #goign to expose the same internally in port 80
         volumeMounts: #this is inside your container or pod
